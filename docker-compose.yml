@@ -1,17 +1,13 @@
-version: "3.7"
 services:
   dbms:
-    image: postgres
-    environment:
-      TZ: ${OS_TIMEZONE}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -d postgres -U postgres" ]
-      interval: 10s
-      timeout: 10s
-      retries: 5
-    ports:
-      - ${DB_PORT}:5432
-    restart: always
-    volumes:
-      - ./src/main/initdb:/docker-entrypoint-initdb.d
+   image: postgres
+   environment:
+     TZ: ${OS_TIMEZONE}
+     POSTGRES_DB: ${DB_NAME}
+     POSTGRES_USER: ${DB_USER}
+     POSTGRES_PASSWORD: ${DB_PASSWORD}
+     PGDATA: /var/lib/postgresql/data/pgdata
+   ports:
+     - ${DB_PORT}:5432
+   volumes:
+     - ./postgres:/docker-entrypoint-initdb.d
