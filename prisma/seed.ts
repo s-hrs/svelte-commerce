@@ -61,9 +61,22 @@ async function main() {
 			categoryId: 3
 		}
 	});
+	const tailwindTShirt = await prisma.product.upsert({
+		where: { id: 4 },
+		update: {},
+		create: {
+			stripe_id: 'price_1ODOJCJi0Rbtg1zZZjQ9MWyK',
+			name: 'Tailwind T-Shirt',
+			description: 'Tailwind logo printed on the center',
+			price: 1500,
+			image: '/products/tailwind-shirt.png',
+			categoryId: 1
+		}
+	});
 	console.log({
 		svelteTShirt,
 		svelteMug,
+		tailwindTShirt,
 		categoryShirts,
 		prismaSticker,
 		categoryMugs,
