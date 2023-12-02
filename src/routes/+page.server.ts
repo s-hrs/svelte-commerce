@@ -1,4 +1,4 @@
-import type { PageServerLoad } from "./$types";
+import type { PageServerLoad } from './$types';
 
 // export type Product = {
 //     id: number;
@@ -12,17 +12,15 @@ import type { PageServerLoad } from "./$types";
 //     categoryId: number
 // }
 
-export const load: PageServerLoad = async ({
-    fetch }) => {
- const productsResponse = await fetch("/api/products", {
-    method: "GET",
-    headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-    }
- });
- const products = await productsResponse.json();
- console.log(products)
- 
- return products
-}
+export const load: PageServerLoad = async ({ fetch }) => {
+	const productsResponse = await fetch('/api/products', {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json',
+			Accept: 'application/json'
+		}
+	});
+	const products = await productsResponse.json();
+
+	return products;
+};
