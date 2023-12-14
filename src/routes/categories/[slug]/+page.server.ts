@@ -9,7 +9,6 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
 		}
 	});
 	const category = await response.json();
-	// console.log(category);
 
 	return category;
 };
